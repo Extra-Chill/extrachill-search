@@ -9,7 +9,7 @@
 
 declare( strict_types=1 );
 
-if ( defined( 'ABSPATH' ) && function_exists( 'get_current_blog_id' ) ) {
+if ( class_exists( 'WP_UnitTestCase' ) ) {
 	return;
 }
 
