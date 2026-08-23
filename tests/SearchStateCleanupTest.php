@@ -9,6 +9,10 @@
 
 declare( strict_types=1 );
 
+if ( defined( 'ABSPATH' ) && function_exists( 'get_current_blog_id' ) ) {
+	return;
+}
+
 define( 'ABSPATH', __DIR__ . '/' );
 
 $current_blog_id = 1;
