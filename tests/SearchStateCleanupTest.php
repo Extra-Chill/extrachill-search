@@ -9,9 +9,7 @@
 
 declare( strict_types=1 );
 
-if ( class_exists( 'WP_UnitTestCase' ) ) {
-	return;
-}
+if ( ! function_exists( 'get_current_blog_id' ) ) :
 
 define( 'ABSPATH', __DIR__ . '/' );
 
@@ -231,3 +229,5 @@ assert_same( array(), $blog_stack, 'Fallback failure left entries on the blog st
 assert_same( array( $unrelated_filter ), $filters['posts_search'][10], 'Fallback cleanup removed an unrelated posts_search callback.' );
 
 fwrite( STDOUT, "Search state cleanup tests passed.\n" );
+
+endif;

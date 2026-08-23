@@ -9,9 +9,7 @@
 
 declare( strict_types=1 );
 
-if ( class_exists( 'WP_UnitTestCase' ) ) {
-	return;
-}
+if ( ! function_exists( 'get_current_blog_id' ) ) :
 
 define( 'ABSPATH', __DIR__ . '/' );
 
@@ -223,3 +221,5 @@ try {
 }
 
 fwrite( STDOUT, "Search index readiness tests passed.\n" );
+
+endif;
