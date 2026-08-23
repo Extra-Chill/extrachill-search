@@ -23,7 +23,11 @@ class Search_State_Test_WPDB {
 	}
 
 	public function get_results() {
-		return array( (object) array( 'Index_type' => 'FULLTEXT' ) );
+		return array(
+			(object) array( 'Key_name' => 'ft_search', 'Seq_in_index' => 1, 'Column_name' => 'post_title' ),
+			(object) array( 'Key_name' => 'ft_search', 'Seq_in_index' => 2, 'Column_name' => 'post_excerpt' ),
+			(object) array( 'Key_name' => 'ft_search', 'Seq_in_index' => 3, 'Column_name' => 'post_content' ),
+		);
 	}
 
 	public function _real_escape( $value ) {
@@ -129,6 +133,10 @@ function is_multisite() {
 	return true;
 }
 
+function is_user_logged_in() {
+	return false;
+}
+
 function wp_parse_args( $args, $defaults ) {
 	return array_merge( $defaults, $args );
 }
@@ -167,6 +175,7 @@ function reset_search_state() {
 	WP_Query::$throw = false;
 }
 
+require_once dirname( __DIR__ ) . '/inc/core/index-health.php';
 require_once dirname( __DIR__ ) . '/inc/core/search-algorithm.php';
 
 reset_search_state();
